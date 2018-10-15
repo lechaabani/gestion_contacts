@@ -16,9 +16,9 @@ Hamadi Chaabani
 
 
 # Installation :
-- git clone https://github.com/lechaabani/gestion_contacts.git
-- cd gestion_contacts
-- composer install (ou php composer.phar install)
+    git clone https://github.com/lechaabani/gestion_contacts.git
+    cd gestion_contacts
+    composer install (ou php composer.phar install)
 
 # Choisir vos paramettres :
     database_host: 127.0.0.1
@@ -28,11 +28,11 @@ Hamadi Chaabani
     database_password: xxxx
 
 # Creation du BDD :
-- php bin/console d:d:c
+    php bin/console d:d:c
 
 # MAJ du shema du BDD :
-- php bin/console d:s:u --force
+    php bin/console d:s:u --force
 
 # Lancer serveur php local
-- php bin/console server:start
+    php bin/console server:start
 
