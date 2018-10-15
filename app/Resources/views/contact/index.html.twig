@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block content %}
+
+<div class="container well well-sm" style="width: 900px; margin: 0 auto; margin-top: 20px">
+
+    <a class="btn btn-success btn-sm pull-right" href="{{ path('ajouter_contact') }}" role="button">Ajouter nouveau contact</a>
+    <h1>Liste des contacts:</h1>
+
+    {% for contact in contacts %}
+        <div class="container well well-sm" style="width: 750px; margin: 0 auto; margin-top: 20px">
+            <div class="col-xs-8">
+                <h1>{{ contact.prenom }} {{ contact.nom }}</h1>
+                <p>{{ contact.email }}</p>
+            </div>
+            <div class="col-xs-4" style="margin-top: 15px">
+                <a class="btn btn-primary btn-sm" href="{{ path('voir_contact',{'id': contact.id}) }}"
+                   role="button">Voir</a>
+                <a class="btn btn-primary btn-sm" href="{{ path('modifier_contact',{'id': contact.id}) }}"
+                   role="button">Modifier</a>
+                <a class="btn btn-danger btn-sm" href="{{ path('supprimer_contact',{'id': contact.id}) }}"
+                   role="button">Supprimer</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

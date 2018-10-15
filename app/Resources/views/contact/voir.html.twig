@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact details{% endblock %}
+
+{% block content %}
+    <div class="container well well-sm" style="width: 900px; margin: 0 auto; margin-top: 20px">
+        <div class="row">
+            <div class="col-xs-8">
+                <h1>{{ contact.nom }} {{ contact.prenom }} </h1>
+                <p>{{ contact.email }}</p>
+            </div>
+            <div class="col-xs-4" style="margin-top: 15px">
+                <a class="btn btn-primary btn-sm" href="{{ path('liste_contact') }}"
+                   role="button">Voir mes contacts</a>
+                <a class="btn btn-primary btn-sm" href="{{ path('modifier_contact',{'id': contact.id}) }}"
+                   role="button">Modifier</a>
+                <a class="btn btn-danger btn-sm" href="{{ path('supprimer_contact',{'id': contact.id}) }}"
+                   role="button">Supprimer</a>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <h3>Adresses:</h3>
+            <ul>
+                {% for address in contact.adresses %}
+                    <li style="margin-top: 10px">
+                        {{ address.rue }} {{ address.codePostale }}
+                        {% if address.ville is not null %}{% endif %}
+                        {{ address.ville }}
+                        <a class="btn btn-primary btn-xs"
+                           href="{{ path('modifier_adresse',{'id': contact.id,'addressId': address.id}) }}"
+                           role="button">Modifier</a>
+                        <a class="btn btn-danger btn-xs"
+                           href="{{ path('supprimer_adresse',{'id': contact.id,'addressId': address.id}) }}"
+                           role="button">Supprimer</a>
+
+                    </li>
+                {% endfor %}
+                <li style="margin-top: 10px">
+                    <a class="btn btn-success btn-sm"
+                       href="{{ path('ajouter_adresse',{'id': contact.id}) }}"
+                       role="button">Ajouter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
