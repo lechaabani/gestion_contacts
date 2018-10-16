@@ -33,6 +33,8 @@ Hamadi Chaabani
 # MAJ du shema du BDD :
     php bin/console d:s:u --force
 
-# Lancer serveur php local
+# Lancer serveur php en locale
     php bin/console server:start
 
+# Lancer le test unitaire des services
+    phpunit tests/AppBundle/Service
