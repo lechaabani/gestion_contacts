@@ -37,3 +37,7 @@ services:
     app.login_authenticateur:
         class: AppBundle\Security\LoginAuthenticateur
         arguments: ["@router", "@security.password_encoder"]
+
+    valider.email:
+        alias: AppBundle\Service\ValiderEmail
+        public: true

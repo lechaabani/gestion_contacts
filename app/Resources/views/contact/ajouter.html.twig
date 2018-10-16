@@ -16,4 +16,26 @@
         </div>
         {{ form_end(form) }}
     </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+         $( "#appbundle_contact_Valider email" ).prop("type", "text");
+         $(".valider_email").on("click",function(e) {
+            e.preventDefault();
+             $.ajax({
+                 url: "{{path('valider_email')}}",
+                 data: {email: $( "#appbundle_contact_email" ).val()},
+                 success: function(response) {
+                      if(response == 1)
+                        $( "#appbundle_contact_email" ).css("border", "1px solid #008000");
+                      else if (response == 0) {
+                        alert("Email nom valide")
+                        $( "#appbundle_contact_email" ).css("border", "1px solid red");
+                    }
+                  }
+             });
+          });
+      });
+    </script>
+
 {% endblock %}
